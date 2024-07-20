@@ -23,10 +23,22 @@ Output2: ThIsIsAsTrInG
 
 '''
 
+class Solution:
+    def solve(self, s):
+        N = len(s)
+        arr = list(s)
+        for i in range(0, N):
+            if ord(arr[i]) >= 65 and ord(arr[i]) <= 90:
+                arr[i] = chr(ord(arr[i]) + 32)
+            elif ord(arr[i]) >= 97 and ord(arr[i]) <= 122:
+                arr[i] = chr(ord(arr[i]) - 32)
+        return "".join(arr)
+print("Test Example 1")
+obj = Solution()
 s = "hELLO"
+print(obj.solve(s))
+print("Test Example 1")
+s="ThIsIsAsTrInG"
+print(obj.solve(s))
 
-def toggle_case(s):
-    print(s)
-
-toggle_case(s)
 

@@ -37,11 +37,36 @@ Output2: [0,0]
 
 class Solution:
     def solve(self, A, B):
-        pass
+        N = len(A)
+        psum = [0]* N
+        if A[0] >= 0:
+            psum[0] = 1
+        for i in range(1, N):
+            if A[i] >= 0:
+                psum[i] = psum[i-1] + 1
+            else:
+                psum[i] = psum[i - 1]
 
+        res = []
+        for i in range(0, len(B)):
+            l = B[i][0]
+            r = B[i][1]
+            if l == 0:
+                res.append(psum[r])
+            else:
+                res.append(psum[r] - psum[l-1])
+        return res
+
+print("Test Example 1")
 A = [1, -1, 0]
 B = [[0, 2],
      [1, 2]]
 S = Solution()
-S.solve(A, B)
+print(S.solve(A, B))
+print("Test Example 2")
+A = [-1, -2]
+B = [[0,0],
+     [1,1]]
+S = Solution()
+print(S.solve(A, B))
 
