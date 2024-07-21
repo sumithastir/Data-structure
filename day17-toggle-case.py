@@ -21,6 +21,18 @@ Example Output:
 Output1: hELLO
 Output2: ThIsIsAsTrInG
 
+Example Explanation
+Explanation 1:
+
+ 'H' changes to 'h'
+ 'e' changes to 'E'
+ 'l' changes to 'L'
+ 'l' changes to 'L'
+ 'o' changes to 'O'
+Explanation 2:
+
+ "tHiSiSaStRiNg" changes to "ThIsIsAsTrInG".
+
 '''
 
 class Solution:
