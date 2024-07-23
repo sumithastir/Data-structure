@@ -34,7 +34,35 @@ The triplet that satisfy the conditions is [1, 2, 3].
 
 '''
 
-class Solution:
-    def solve(self, A):
-        pass
 
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        cnt = 0
+        N = len(A)
+        for i in range(1, N - 1):
+            # print(A[i])
+            count_smaller = 0
+            l = i - 1
+            while l >= 0:
+                if A[i] > A[l]:
+                    count_smaller += 1
+                l -= 1
+            # print(count_smaller)
+            count_greater = 0
+            r = i + 1
+            while r < N:
+                if A[r] > A[i]:
+                    count_greater += 1
+                r += 1
+            # print(count_greater)
+
+            if count_greater > 0 and count_smaller > 0:
+                cnt += (count_smaller * count_greater)
+        return cnt
+
+A = [1, 2, 4, 3]
+obj = Solution()
+res = obj.majorityElement(A)
+print(res)

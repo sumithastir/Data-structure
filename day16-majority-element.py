@@ -36,6 +36,24 @@ For Input 2:
 '''
 
 class Solution:
-    def solve(self, A):
-        pass
+    # @param A : tuple of integers
+    # @return an integer
+    def majorityElement(self, A):
+        N = len(A)
+        freq = 1
+        majority = A[0]
+        for i in range(1, N):
+            if freq == 0:
+                freq = 1
+                majority = A[i]
+            elif A[i] == majority:
+                freq+=1
+            else:
+                freq -=1
+        return majority
+
+A = [2, 1, 2]
+obj = Solution()
+res = obj.majorityElement(A)
+print(res)
 

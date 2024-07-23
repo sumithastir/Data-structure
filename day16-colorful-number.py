@@ -52,7 +52,45 @@ Explanation 2:
 
 '''
 
+
 class Solution:
-    def solve(self, A):
-        pass
+    # @param A : integer
+    # @return an integer
+    def colorful(self, A):
+        numbers = []
+
+        while A != 0:
+            num = A % 10
+            numbers.append(num)
+            A = A // 10
+
+        # simply reverse the List
+        N = len(numbers)
+        l = 0
+        r = N - 1
+        while l < r:
+            numbers[l], numbers[r] = numbers[r], numbers[l]
+            l += 1
+            r -= 1
+        # print(numbers)
+        unique_list = []
+        for i in range(0, N):
+            prod = 1
+            for j in range(i, N):
+                prod = prod * numbers[j]
+                if prod in unique_list:
+                    return 0
+                unique_list.append(prod)
+
+                # print(unique_list)
+        return 1
+
+
+A = 23
+
+obj = Solution()
+res = obj.colorful(A)
+print(res)
+
+
 

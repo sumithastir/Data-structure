@@ -41,6 +41,49 @@ No element occurs more than 3 / 3 = 1 times in the array.
 '''
 
 class Solution:
-    def solve(self, A):
-        pass
+    # @param A : tuple of integers
+    # @return an integer
+    def repeatedNumber(self, A):
+        majority1 = -1
+        majority2 = -1
+        freq1 = 0
+        freq2 = 0
+        N = len(A)
+
+        for i in range(0, N):
+            if majority1 == A[i]:
+                freq1 +=1
+            elif majority2 == A[i]:
+                freq2 +=1
+            elif freq1 == 0:
+                majority1 = A[i]
+                freq1+=1
+            elif freq2 == 0:
+                majority2 = A[i]
+                freq2+=1
+            else:
+                freq1-=1
+                freq2-=1
+        c1 = majority1
+        c2 = majority2
+        freq1 = 0
+        freq2 = 0
+        for i in range(0, N):
+            if A[i] == c1:
+                freq1 +=1
+            if A[i] == c2:
+                freq2 +=1
+
+        if freq1 > N/3:
+            return c1
+        elif freq2 > N/3:
+            return c2
+        else:
+            return -1
+
+
+A = [1,2, 3, 1, 1]
+obj = Solution()
+res = obj.repeatedNumber(A)
+print(res)
 

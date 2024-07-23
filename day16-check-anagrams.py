@@ -39,7 +39,28 @@ They are an anagram.
 
 '''
 
+
 class Solution:
-    def solve(self, A):
-        pass
+    # @param A : string
+    # @param B : string
+    # @return an integer
+    def solve(self, A, B):
+        arr = [0] * 26
+        arr1 = [0] * 26
+        N = len(A)
+
+        for i in range(N):
+            arr[ord(A[i]) - ord('a')] += 1
+            arr1[ord(B[i]) - ord('a')] += 1
+
+        for i in range(0, 26):
+            if arr[i] != arr1[i]:
+                return 0
+        return 1
+
+A = "cat"
+B = "bat"
+obj = Solution()
+res = obj.solve(A, B)
+print(res)
 
